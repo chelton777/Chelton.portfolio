@@ -141,14 +141,6 @@ pointer-events: none;
 display: none !important;
 }
 }
-.parallax-bg {
-transform: translateZ(0);
-will-change: transform;
-}
-.parallax-element {
-transform: translateZ(0);
-will-change: transform;
-}
 </style>
 </head>
 <body class="bg-slate-900 text-white overflow-x-hidden">
@@ -179,7 +171,7 @@ will-change: transform;
 <div class="container mx-auto h-screen flex items-center relative z-10">
 <div class="max-w-2xl pl-12">
 <div class="space-y-6 text-left">
-<p class="text-2xl font-light">Ola, Eu sou</p>
+<p class="text-2xl font-light">Olá, Eu sou</p>
 <h1 class="text-6xl font-bold tracking-tight">CHELTON</h1>
 <p class="text-3xl font-medium text-slate-300">Designer UI/UX</p>
 </div>
@@ -191,8 +183,6 @@ will-change: transform;
 <img src="chelton.jpg" alt="Chelton - Designer UI/UX profissional em Matola, Maputo" loading="lazy" decoding="async">
 </div>
 </div>
-</section>
-
 </section>
 <!-- Portfolio Section -->
 <section id="portfolio" class="min-h-screen bg-black py-24 section-transition parallax-bg">
@@ -361,7 +351,6 @@ send_page_view: true
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 emailjs.init("DjHy-Gtg4HgNi6BSp");
-console.log('EmailJS inicializado com sucesso');
 });
 </script>
 <script id="form-handler">
@@ -441,43 +430,26 @@ submitBtn.classList.toggle('opacity-50', loading);
 }
 
 if (form) {
-console.log('Formulário encontrado, configurando eventos...');
 form.addEventListener('submit', async function(e) {
 e.preventDefault();
-console.log('Formulário submetido');
 if (isSubmitting) return;
 
-// Verificar se EmailJS está carregado
 if (typeof emailjs === 'undefined') {
-console.error('EmailJS não está definido');
-showFeedback('Erro: EmailJS não está carregado. Recarregue a página.', 'error');
+showFeedback('Erro: serviço de e-mail não carregado. Recarregue a página.', 'error');
 return;
 }
 
-console.log('EmailJS está disponível:', emailjs);
-
 const formData = new FormData(this);
-console.log('Dados do formulário:', {
-name: formData.get('name'),
-email: formData.get('email'),
-phone: formData.get('phone'),
-message: formData.get('message')
-});
-
 const errors = validateForm(formData);
 
 if (errors.length > 0) {
-console.log('Erros de validação:', errors);
 showFeedback(errors.join(', '), 'error');
 return;
 }
 
-console.log('Iniciando envio do e-mail...');
 setLoadingState(true);
 
 try {
-console.log('Preparando parâmetros do template...');
-// Configuração do EmailJS
 const templateParams = {
 from_name: formData.get('name'),
 from_email: formData.get('email'),
@@ -487,28 +459,18 @@ to_name: 'Chelton',
 reply_to: formData.get('email')
 };
 
-console.log('Parâmetros do template:', templateParams);
-console.log('Tentando enviar e-mail...');
-
-// Enviar e-mail usando EmailJS
-const result = await emailjs.send(
+await emailjs.send(
 'service_vv7r3tl',
 'template_kb50h7r',
 templateParams
 );
 
-console.log('Email enviado com sucesso:', result);
 showFeedback('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
 resetForm();
 
 } catch (error) {
-console.error('Erro detalhado ao enviar e-mail:', error);
-console.error('Tipo do erro:', typeof error);
-console.error('Mensagem do erro:', error.message);
-console.error('Stack do erro:', error.stack);
-showFeedback('Erro ao enviar mensagem. Verifique o console para mais detalhes.', 'error');
+showFeedback('Erro ao enviar mensagem. Tente novamente ou contacte pelo WhatsApp.', 'error');
 } finally {
-console.log('Finalizando envio...');
 setLoadingState(false);
 }
 });
@@ -544,8 +506,8 @@ this.classList.add(isValid ? 'border-green-500' : 'border-red-500');
   "name": "Chelton",
   "jobTitle": "Designer UI/UX",
   "description": "Designer UI/UX profissional especializado em interfaces digitais, aplicativos móveis e websites responsivos",
-  "url": "https://chelton-portfolio.com/",
-  "image": "https://chelton-portfolio.com/chelton.jpg",
+  "url": "https://chelton777.github.io/Chelton.portfolio/",
+  "image": "https://chelton777.github.io/Chelton.portfolio/chelton.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Matola",
@@ -667,36 +629,13 @@ value: timeSpent
 
 <!-- Performance and SEO optimizations -->
 <script>
-// Lazy load images
+// Preload hero image
 document.addEventListener('DOMContentLoaded', function() {
-const images = document.querySelectorAll('img[loading="lazy"]');
-if ('IntersectionObserver' in window) {
-const imageObserver = new IntersectionObserver((entries, observer) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const img = entry.target;
-img.src = img.src;
-img.classList.remove('lazy');
-imageObserver.unobserve(img);
-}
-});
-});
-images.forEach(img => imageObserver.observe(img));
-}
-
-// Preload critical resources
-const criticalResources = [
-'chelton.jpg',
-'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'
-];
-
-criticalResources.forEach(resource => {
 const link = document.createElement('link');
 link.rel = 'preload';
-link.as = resource.includes('.jpg') ? 'image' : 'style';
-link.href = resource;
+link.as = 'image';
+link.href = 'chelton.jpg';
 document.head.appendChild(link);
-});
 });
 </script>
 </body>
