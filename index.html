@@ -3,347 +3,796 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chelton - Designer UI/UX | Portfolio Profissional | Matola, Maputo</title>
-
-<!-- SEO Meta Tags -->
-<meta name="description" content="Chelton é um designer UI/UX profissional em Matola, Maputo. Especializado em interfaces digitais, aplicativos móveis, websites responsivos e identidade visual. Transforme suas ideias em experiências digitais únicas.">
-<meta name="keywords" content="designer UI/UX, interface design, aplicativos móveis, websites responsivos, identidade visual, Matola, Maputo, Moçambique, design digital, portfolio designer">
-<meta name="author" content="Chelton - Designer UI/UX">
+<title>Chelton — Designer UI/UX | Portfolio Profissional | Matola, Maputo</title>
+<meta name="description" content="Chelton é um designer UI/UX profissional em Matola, Maputo. Especializado em interfaces digitais, aplicativos móveis, websites responsivos e identidade visual.">
+<meta name="keywords" content="designer UI/UX, interface design, aplicativos móveis, websites responsivos, identidade visual, Matola, Maputo, Moçambique">
+<meta name="author" content="Chelton Mahoze - Designer UI/UX">
 <meta name="robots" content="index, follow">
-<meta name="language" content="Portuguese">
-
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chelton777.github.io/Chelton.portfolio/">
-<meta property="og:title" content="Chelton - Designer UI/UX | Portfolio Profissional">
+<meta property="og:title" content="Chelton — Designer UI/UX | Portfolio Profissional">
 <meta property="og:description" content="Designer UI/UX especializado em interfaces digitais, aplicativos móveis e websites responsivos em Matola, Maputo.">
 <meta property="og:image" content="https://chelton777.github.io/Chelton.portfolio/chelton.jpg">
-
-<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://chelton777.github.io/Chelton.portfolio/">
-<meta property="twitter:title" content="Chelton - Designer UI/UX | Portfolio Profissional">
-<meta property="twitter:description" content="Designer UI/UX especializado em interfaces digitais, aplicativos móveis e websites responsivos em Matola, Maputo.">
+<meta property="twitter:title" content="Chelton — Designer UI/UX | Portfolio Profissional">
+<meta property="twitter:description" content="Designer UI/UX especializado em interfaces digitais, aplicativos móveis e websites responsivos.">
 <meta property="twitter:image" content="https://chelton777.github.io/Chelton.portfolio/chelton.jpg">
-
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-<!-- Preconnect para performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#333333',secondary:'#1a1a1a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#14b8a6',
+        'primary-dark': '#0f766e',
+        secondary: '#818cf8',
+        surface: '#111827',
+        'surface-2': '#1f2937',
+      }
+    }
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
-body { 
-  font-family: 'Inter', sans-serif; 
-  background-color: #000000; 
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #f1f5f9;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
-/* Melhorias de acessibilidade */
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
-/* Foco visível para navegação por teclado */
-*:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+
+*:focus-visible { outline: 2px solid #14b8a6; outline-offset: 2px; }
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #14b8a6, #818cf8);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
 }
-.hero-bg {
-background: linear-gradient(135deg, #000000 0%, #111111 50%, #1a1a1a 100%);
-position: relative;
+
+/* Custom cursor */
+#cursor {
+  width: 10px; height: 10px;
+  background: #14b8a6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
 }
-.hero-bg::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background-image: url('https://readdy.ai/api/search-image?query=dark%20teal%20gradient%20abstract%20background%20with%20subtle%20geometric%20patterns%20and%20modern%20minimalist%20design%20elements%20for%20ui%20ux%20designer%20portfolio%20website&width=1920&height=1080&seq=hero-bg&orientation=landscape');
-background-size: cover;
-background-position: center;
-opacity: 0.3;
-z-index: 1;
-transform: translateZ(0);
-will-change: transform;
+#cursor-ring {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(20,184,166,0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  transition: all 0.25s ease;
 }
-.hero-content {
-position: relative;
-z-index: 2;
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #14b8a6 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.scroll-indicator {
-animation: bounce 2s infinite;
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
-@keyframes bounce {
-0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-40% { transform: translateY(-10px); }
-60% { transform: translateY(-5px); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Hero */
+.hero-section {
+  background:
+    radial-gradient(ellipse at 75% 50%, rgba(20,184,166,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(129,140,248,0.06) 0%, transparent 50%),
+    #0a0a0a;
 }
-.section-transition {
-transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
+
+/* Typing cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 4px; height: 0.85em;
+  background: #14b8a6;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Nav */
+.nav-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10,10,10,0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-link {
+  position: relative;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #14b8a6, #818cf8);
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: #f1f5f9; }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+.nav-link.active { color: #14b8a6; }
+
+/* Mobile menu */
+#mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,10,10,0.97);
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+#mobile-menu.open { display: flex; }
+.mobile-nav-link {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: -0.02em;
+}
+.mobile-nav-link:hover { color: #14b8a6; }
+
+/* Hamburger */
+.hamburger { display: flex; flex-direction: column; gap: 6px; padding: 4px; cursor: pointer; background: none; border: none; }
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: #f1f5f9;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* CTA buttons */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  border: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #818cf8, #14b8a6);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(20,184,166,0.35); }
+.btn-primary > * { position: relative; z-index: 1; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #f1f5f9;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  background: transparent; cursor: pointer;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  border-color: #14b8a6;
+  color: #14b8a6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(20,184,166,0.12);
+}
+
+/* Hero image */
+.hero-img-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.hero-img-container::after {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #14b8a6, #818cf8);
+  z-index: -1;
+  filter: blur(16px);
+  opacity: 0.4;
+}
+
+/* Stats */
+.stat-card {
+  background: linear-gradient(135deg, #0f1623 0%, #1a2235 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover { transform: translateY(-4px); border-color: rgba(20,184,166,0.3); }
+.stat-number { font-size: 2.75rem; font-weight: 900; line-height: 1; }
+
+/* Portfolio */
 .portfolio-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
-@media (max-width: 768px) {
-.portfolio-grid {
-grid-template-columns: repeat(2, 1fr);
-gap: 1rem;
+@media (max-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+.portfolio-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111827;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5), 0 0 30px rgba(20,184,166,0.12);
+  border-color: rgba(20,184,166,0.3);
 }
-@media (max-width: 640px) {
-.portfolio-grid {
-grid-template-columns: 1fr;
+.card-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/3; }
+.card-img {
+  width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  transition: transform 0.6s ease;
 }
+.portfolio-card:hover .card-img { transform: scale(1.06); }
+.card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 1.25rem;
 }
-.card-hover {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+.portfolio-card:hover .card-img-overlay { opacity: 1; }
+.card-body { padding: 1.25rem 1.25rem 1.5rem; }
+
+/* Skills */
+.skill-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(20,184,166,0.08);
+  border: 1px solid rgba(20,184,166,0.18);
+  border-radius: 9999px;
+  color: #5eead4;
+  font-size: 0.875rem; font-weight: 500;
+  transition: all 0.3s;
+  cursor: default;
 }
-.card-hover:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+.skill-tag:hover {
+  background: rgba(20,184,166,0.18);
+  border-color: #14b8a6;
+  transform: translateY(-2px);
 }
-/* Performance optimizations */
-.parallax-bg {
-transform: translateZ(0);
-will-change: transform;
+
+/* Contact form */
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 15px 18px;
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, background 0.3s;
+  outline: none;
 }
-.parallax-element {
-transform: translateZ(0);
-will-change: transform;
+.form-input::placeholder { color: #4b5563; }
+.form-input:focus { border-color: #14b8a6; background: rgba(20,184,166,0.04); }
+.form-input.valid { border-color: #10b981; }
+.form-input.invalid { border-color: #ef4444; }
+
+/* Contact info icons */
+.contact-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: rgba(20,184,166,0.08);
+  border: 1px solid rgba(20,184,166,0.2);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
 }
-/* Loading states */
-.loading {
-opacity: 0.7;
-pointer-events: none;
+.contact-icon:hover { background: rgba(20,184,166,0.15); border-color: #14b8a6; }
+
+/* Back to top */
+#back-to-top {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #14b8a6, #818cf8);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: none;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(20,184,166,0.3);
 }
-/* Print styles */
+#back-to-top.visible { opacity: 1; transform: translateY(0); }
+#back-to-top:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(20,184,166,0.5); }
+
+/* Social sidebar */
+.social-sidebar a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; color: #4b5563; font-size: 1.1rem;
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+.social-sidebar a:hover {
+  color: #14b8a6;
+  background: rgba(20,184,166,0.1);
+  transform: translateX(4px);
+}
+
+/* Toast */
+.toast {
+  position: fixed; top: 1.5rem; right: 1.5rem;
+  padding: 1rem 1.5rem; border-radius: 12px;
+  font-weight: 600; z-index: 9999; max-width: 320px;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Scroll indicator */
+@keyframes bounce-y { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+.scroll-caret { animation: bounce-y 2s ease-in-out infinite; }
+
+/* Available badge pulse */
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+.pulse { animation: pulse 2s ease-in-out infinite; }
+
 @media print {
-.hero-bg::before,
-.parallax-bg,
-.parallax-element {
-display: none !important;
-}
-}
-.parallax-bg {
-transform: translateZ(0);
-will-change: transform;
-}
-.parallax-element {
-transform: translateZ(0);
-will-change: transform;
+  #scroll-progress, #cursor, #cursor-ring, #back-to-top, .social-sidebar { display: none !important; }
 }
 </style>
 </head>
-<body class="bg-slate-900 text-white overflow-x-hidden">
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- Custom Cursor (desktop only) -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="Voltar ao topo">
+  <i class="ri-arrow-up-line text-white text-lg"></i>
+</button>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <button id="close-menu" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;cursor:pointer;" class="text-slate-400 hover:text-white transition-colors" aria-label="Fechar menu">
+    <i class="ri-close-line text-3xl"></i>
+  </button>
+  <a href="#home" class="mobile-nav-link">Início</a>
+  <a href="#portfolio" class="mobile-nav-link">Projetos</a>
+  <a href="#skills" class="mobile-nav-link">Habilidades</a>
+  <a href="#contact" class="mobile-nav-link">Contato</a>
+</div>
+
 <!-- Header -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm border-b border-slate-800">
-<div class="w-full px-8 py-6 flex items-center justify-between">
-<div class="text-2xl font-bold tracking-wider">WALK</div>
-<nav class="flex items-center space-x-8">
-<a href="#portfolio" class="text-slate-300 hover:text-white transition-colors font-medium">PROJETOS</a>
-<a href="#contact" class="text-slate-300 hover:text-white transition-colors font-medium">CONTATO</a>
-</nav>
-</div>
+<header class="fixed top-0 left-0 right-0 z-50 nav-blur">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="text-xl font-black tracking-widest gradient-text" style="text-decoration:none;">WALK</a>
+    <nav class="hidden md:flex items-center gap-10">
+      <a href="#home" class="nav-link">INÍCIO</a>
+      <a href="#portfolio" class="nav-link">PROJETOS</a>
+      <a href="#skills" class="nav-link">HABILIDADES</a>
+      <a href="#contact" class="nav-link">CONTATO</a>
+    </nav>
+    <button class="hamburger md:hidden" id="hamburger-btn" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
-<!-- Social Icons -->
-<div class="fixed left-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-6">
-<a href="https://www.instagram.com/chelton__m" target="_blank" rel="noopener" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white transition-colors" onclick="gtag('event', 'social_click', {event_category: 'Social', event_label: 'Instagram', value: 1})">
-<i class="ri-instagram-line"></i>
-</a>
-<a href="https://wa.me/258846148256" target="_blank" rel="noopener" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white transition-colors" onclick="gtag('event', 'social_click', {event_category: 'Social', event_label: 'WhatsApp', value: 1})">
-<i class="ri-whatsapp-line"></i>
-</a>
-<a href="https://pinterest.com/pin/1087830622401091418" target="_blank" rel="noopener" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white transition-colors" onclick="gtag('event', 'social_click', {event_category: 'Social', event_label: 'Pinterest', value: 1})">
-<i class="ri-pinterest-line"></i>
-</a>
+
+<!-- Social Sidebar (desktop) -->
+<div class="social-sidebar fixed left-6 top-1/2 z-40 hidden lg:flex flex-col gap-3" style="transform:translateY(-50%)">
+  <a href="https://www.instagram.com/chelton__m" target="_blank" rel="noopener" aria-label="Instagram"
+     onclick="gtag('event','social_click',{event_category:'Social',event_label:'Instagram',value:1})">
+    <i class="ri-instagram-line"></i>
+  </a>
+  <a href="https://wa.me/258846148256" target="_blank" rel="noopener" aria-label="WhatsApp"
+     onclick="gtag('event','social_click',{event_category:'Social',event_label:'WhatsApp',value:1})">
+    <i class="ri-whatsapp-line"></i>
+  </a>
+  <a href="https://pinterest.com/pin/1087830622401091418" target="_blank" rel="noopener" aria-label="Pinterest"
+     onclick="gtag('event','social_click',{event_category:'Social',event_label:'Pinterest',value:1})">
+    <i class="ri-pinterest-line"></i>
+  </a>
+  <div style="width:1px;height:56px;background:linear-gradient(to bottom,transparent,#334155,transparent);margin:4px auto;"></div>
 </div>
-<!-- Hero Section -->
-<section id="home" class="min-h-screen bg-black relative overflow-hidden">
-<div class="container mx-auto h-screen flex items-center relative z-10">
-<div class="max-w-2xl pl-12">
-<div class="space-y-6 text-left">
-<p class="text-2xl font-light">Ola, Eu sou</p>
-<h1 class="text-6xl font-bold tracking-tight">CHELTON</h1>
-<p class="text-3xl font-medium text-slate-300">Designer UI/UX</p>
-</div>
-</div>
-</div>
-<div class="absolute top-0 right-0 max-w-2xl h-full parallax-element">
-<div class="relative w-full h-full">
-<div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-0"></div>
-<img src="chelton.jpg" alt="Chelton - Designer UI/UX profissional em Matola, Maputo" loading="lazy" decoding="async">
-</div>
-</div>
+
+<!-- ══════════════════════════ HERO ══════════════════════════ -->
+<section id="home" class="hero-section grid-pattern min-h-screen flex items-center relative overflow-hidden" style="padding-top:80px;">
+  <div class="max-w-7xl mx-auto px-6 lg:px-16 w-full flex flex-col lg:flex-row items-center gap-12 py-16">
+
+    <!-- Text -->
+    <div class="flex-1 reveal">
+      <p class="text-sm font-mono tracking-widest mb-5 flex items-center gap-3" style="color:#14b8a6;">
+        <span style="display:inline-block;width:2rem;height:1px;background:#14b8a6;"></span>
+        OLÁ, EU SOU
+      </p>
+      <h1 class="font-black tracking-tight leading-none mb-4" style="font-size:clamp(4rem,10vw,7rem);">
+        <span class="gradient-text" id="typing-name"></span><span class="typing-cursor"></span>
+      </h1>
+      <p class="text-2xl lg:text-3xl font-light text-slate-300 mb-6">
+        Designer <span style="color:#14b8a6;font-weight:600;">UI/UX</span>
+      </p>
+      <p class="text-slate-400 leading-relaxed mb-10 max-w-lg">
+        Crio experiências digitais que encantam — de interfaces mobile a identidades visuais completas.
+        Transformo ideias em realidade com Figma, Webflow e Adobe XD.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#portfolio" class="btn-primary"
+           onclick="gtag('event','cta_click',{event_category:'CTA',event_label:'Ver Projetos Hero',value:1})">
+          Ver Projetos &nbsp;<i class="ri-arrow-right-up-line"></i>
+        </a>
+        <a href="#contact" class="btn-outline">Falar Comigo</a>
+      </div>
+    </div>
+
+    <!-- Photo -->
+    <div class="flex-shrink-0 reveal" style="transition-delay:0.2s;position:relative;">
+      <div class="hero-img-container" style="width:clamp(260px,30vw,380px);">
+        <img src="chelton.jpg"
+             alt="Chelton Mahoze — Designer UI/UX, Matola, Maputo"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <!-- Available badge -->
+      <div style="position:absolute;bottom:-16px;left:-24px;background:#0f1623;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+        <span style="width:10px;height:10px;background:#22c55e;border-radius:50%;display:inline-block;" class="pulse"></span>
+        <span style="font-size:0.8rem;font-weight:500;color:#cbd5e1;">Disponível para projetos</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-caret" style="position:absolute;bottom:2.5rem;left:50%;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0.45;">
+    <span style="font-size:0.65rem;letter-spacing:0.2em;color:#64748b;">SCROLL</span>
+    <i class="ri-arrow-down-line" style="color:#14b8a6;font-size:1.1rem;"></i>
+  </div>
 </section>
 
+<!-- ══════════════════════════ STATS ══════════════════════════ -->
+<section id="stats" class="py-20" style="background:#060606;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-4xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="stat-card reveal">
+      <div class="stat-number gradient-text" data-target="30" data-suffix="+">0</div>
+      <p class="text-slate-500 text-sm mt-2 font-medium">Projetos concluídos</p>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.1s">
+      <div class="stat-number gradient-text" data-target="20" data-suffix="+">0</div>
+      <p class="text-slate-500 text-sm mt-2 font-medium">Clientes satisfeitos</p>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.2s">
+      <div class="stat-number gradient-text" data-target="3" data-suffix="">0</div>
+      <p class="text-slate-500 text-sm mt-2 font-medium">Anos de experiência</p>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.3s">
+      <div class="stat-number gradient-text" data-target="6" data-suffix="+">0</div>
+      <p class="text-slate-500 text-sm mt-2 font-medium">Ferramentas dominadas</p>
+    </div>
+  </div>
 </section>
-<!-- Portfolio Section -->
-<section id="portfolio" class="min-h-screen bg-black py-24 section-transition parallax-bg">
-<div class="max-w-7xl mx-auto px-8">
-<div class="text-center mb-20">
-<h2 class="text-6xl font-black tracking-tight mb-6">MEU PORTFÓLIO</h2>
-<p class="text-xl text-slate-300 max-w-2xl mx-auto">Crio experiências digitais únicas e intuitivas que conectam marcas aos seus usuários de forma memorável.</p>
-</div>
-<div class="portfolio-grid mb-16">
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=modern%20mobile%20app%20interface%20design%20with%20clean%20ui%20elements%20dark%20theme%20and%20professional%20layout%20for%20portfolio%20showcase&width=400&height=300&seq=mobile-app&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Aplicativos Móveis</h3>
-<p class="text-slate-400">Interfaces intuitivas para iOS e Android</p>
-</div>
-</div>
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=user%20interface%20design%20components%20and%20ui%20elements%20with%20modern%20design%20system%20dark%20theme%20for%20digital%20products&width=400&height=300&seq=ui-design&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">UI de Design</h3>
-<p class="text-slate-400">Sistemas de design consistentes</p>
-</div>
-</div>
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=responsive%20website%20design%20with%20modern%20layout%20clean%20typography%20and%20professional%20web%20interface%20dark%20theme&width=400&height=300&seq=websites&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Sites</h3>
-<p class="text-slate-400">Websites responsivos e modernos</p>
-</div>
-</div>
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=brand%20identity%20design%20with%20logo%20typography%20and%20visual%20elements%20modern%20minimalist%20style%20dark%20background&width=400&height=300&seq=branding&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Identidade Visual</h3>
-<p class="text-slate-400">Marcas memoráveis e impactantes</p>
-</div>
-</div>
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=interactive%20prototypes%20and%20wireframes%20with%20user%20experience%20flow%20design%20modern%20ux%20tools%20dark%20interface&width=400&height=300&seq=prototypes&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Protótipos</h3>
-<p class="text-slate-400">Experiências interativas testáveis</p>
-</div>
-</div>
-<div class="card-hover bg-slate-700 rounded-xl overflow-hidden">
-<div class="aspect-[4/3] bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=creative%20portfolio%20showcase%20with%20artistic%20design%20elements%20modern%20layout%20and%20professional%20presentation%20dark%20theme&width=400&height=300&seq=portfolio&orientation=landscape')"></div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Portfólios Criativos</h3>
-<p class="text-slate-400">Showcases únicos e personalizados</p>
-</div>
-</div>
-</div>
-<div class="text-center">
-<a href="https://readdy.ai/home/bc17cca7-d83e-4995-9e8e-bc59571b6241/6ec15aba-4c5b-4e6a-bb43-18bef41d0d4d" data-readdy="true" onclick="gtag('event', 'cta_click', {event_category: 'CTA', event_label: 'Ver Todos os Projetos', value: 1})">
-<button class="bg-gray-800 hover:bg-gray-700 text-white px-12 py-4 !rounded-button font-bold text-lg tracking-wide transition-colors whitespace-nowrap">
-VER TODOS OS PROJETOS
-</button>
-</a>
-</div>
-</div>
+
+<!-- ══════════════════════════ PORTFOLIO ══════════════════════════ -->
+<section id="portfolio" class="py-28" style="background:#0a0a0a;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal">
+      <p class="text-sm font-mono tracking-widest mb-4" style="color:#14b8a6;">MEU TRABALHO</p>
+      <h2 class="font-black tracking-tight mb-6" style="font-size:clamp(2.5rem,6vw,4rem);">PORTFÓLIO</h2>
+      <p class="text-xl text-slate-400 max-w-xl mx-auto">Projetos que demonstram minha paixão por design centrado no utilizador.</p>
+    </div>
+
+    <div class="portfolio-grid mb-16">
+
+      <div class="portfolio-card reveal">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=modern%20mobile%20app%20interface%20design%20with%20clean%20ui%20elements%20dark%20theme%20and%20professional%20layout%20for%20portfolio%20showcase&width=400&height=300&seq=mobile-app&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">APP DESIGN</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">Aplicativos Móveis</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">APP DESIGN</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">Aplicativos Móveis</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Interfaces intuitivas para iOS e Android</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal" style="transition-delay:0.1s">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=user%20interface%20design%20components%20and%20ui%20elements%20with%20modern%20design%20system%20dark%20theme%20for%20digital%20products&width=400&height=300&seq=ui-design&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">UI SYSTEM</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">UI de Design</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">UI SYSTEM</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">UI de Design</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Sistemas de design consistentes</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal" style="transition-delay:0.2s">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=responsive%20website%20design%20with%20modern%20layout%20clean%20typography%20and%20professional%20web%20interface%20dark%20theme&width=400&height=300&seq=websites&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">WEB</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">Sites</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">WEB</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">Sites</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Websites responsivos e modernos</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal" style="transition-delay:0.3s">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=brand%20identity%20design%20with%20logo%20typography%20and%20visual%20elements%20modern%20minimalist%20style%20dark%20background&width=400&height=300&seq=branding&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">BRANDING</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">Identidade Visual</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">BRANDING</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">Identidade Visual</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Marcas memoráveis e impactantes</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal" style="transition-delay:0.4s">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=interactive%20prototypes%20and%20wireframes%20with%20user%20experience%20flow%20design%20modern%20ux%20tools%20dark%20interface&width=400&height=300&seq=prototypes&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">UX</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">Protótipos</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">UX</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">Protótipos</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Experiências interativas testáveis</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal" style="transition-delay:0.5s">
+        <div class="card-img-wrap">
+          <div class="card-img" style="background-image:url('https://readdy.ai/api/search-image?query=creative%20portfolio%20showcase%20with%20artistic%20design%20elements%20modern%20layout%20and%20professional%20presentation%20dark%20theme&width=400&height=300&seq=portfolio&orientation=landscape')"></div>
+          <div class="card-img-overlay">
+            <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">CREATIVE</span>
+            <h3 style="font-size:1.1rem;font-weight:700;margin-top:2px;">Portfólios Criativos</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <span style="color:#14b8a6;font-size:0.7rem;font-family:monospace;letter-spacing:0.15em;">CREATIVE</span>
+          <h3 style="font-size:1rem;font-weight:700;margin-top:4px;">Portfólios Criativos</h3>
+          <p style="color:#64748b;font-size:0.875rem;margin-top:4px;">Showcases únicos e personalizados</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center reveal">
+      <a href="https://readdy.ai/home/bc17cca7-d83e-4995-9e8e-bc59571b6241/6ec15aba-4c5b-4e6a-bb43-18bef41d0d4d"
+         target="_blank" rel="noopener" class="btn-primary"
+         onclick="gtag('event','cta_click',{event_category:'CTA',event_label:'Ver Todos os Projetos',value:1})">
+        Ver Todos os Projetos &nbsp;<i class="ri-external-link-line"></i>
+      </a>
+    </div>
+  </div>
 </section>
-<!-- Contact Section -->
-<section id="contact" class="min-h-screen bg-black py-24 section-transition parallax-bg">
-<div class="max-w-7xl mx-auto px-8">
-<div class="grid lg:grid-cols-2 gap-16 items-start">
-<div>
-<h2 class="text-6xl font-black tracking-tight mb-8">ENTRE EM CONTATO</h2>
-<p class="text-xl text-slate-300 mb-12 leading-relaxed">
-Sou Chelton, designer UI/UX especializado em criar interfaces digitais que encantam usuários.
-Desenvolvo aplicativos, sites responsivos e experiências visuais únicas.
-Trabalho com Figma, Webflow e Adobe XD para transformar ideias em realidade digital.
-</p>
-<div class="space-y-8">
-<div>
-<h3 class="text-lg font-bold mb-3 text-slate-200">Endereço</h3>
-<p class="text-slate-400">Matola, Maputo - Moçambique</p>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-3 text-slate-200">E-mail</h3>
-<p class="text-slate-400">cheltonmahoze7@gmail.com</p>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-3 text-slate-200">WhatsApp</h3>
-<p class="text-slate-400">+258 846148256</p>
-</div>
-</div>
-</div>
-<div class="bg-slate-800 p-8 rounded-2xl">
-<h3 class="text-2xl font-bold mb-8">FORMULÁRIO DE CONTATO</h3>
-<form class="space-y-6">
-<div>
-<input type="text" name="name" placeholder="Nome *" required class="w-full bg-slate-700 border-2 border-transparent rounded-lg px-4 py-4 text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:outline-none transition-colors">
-</div>
-<div>
-<input type="tel" name="phone" placeholder="Telefone (opcional)" class="w-full bg-slate-700 border-2 border-transparent rounded-lg px-4 py-4 text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:outline-none transition-colors">
-</div>
-<div>
-<input type="email" name="email" placeholder="E-mail *" required class="w-full bg-slate-700 border-2 border-transparent rounded-lg px-4 py-4 text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:outline-none transition-colors">
-</div>
-<div>
-<textarea name="message" placeholder="Mensagem *" rows="5" required class="w-full bg-slate-700 border-2 border-transparent rounded-lg px-4 py-4 text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:outline-none resize-none transition-colors"></textarea>
-</div>
-<button type="submit" class="w-full bg-gray-800 hover:bg-gray-700 text-white py-4 !rounded-button font-bold text-lg tracking-wide transition-all duration-300 whitespace-nowrap">
-ENVIAR MENSAGEM
-</button>
-</form>
-</div>
-</div>
-</div>
+
+<!-- ══════════════════════════ SKILLS ══════════════════════════ -->
+<section id="skills" class="py-28" style="background:#060606;border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <p class="text-sm font-mono tracking-widest mb-4" style="color:#14b8a6;">SOBRE MIM</p>
+        <h2 class="font-black tracking-tight mb-8" style="font-size:clamp(2rem,5vw,3.25rem);">Habilidades &amp;<br>Ferramentas</h2>
+        <p class="text-slate-400 leading-relaxed mb-5">
+          Sou Chelton, designer UI/UX baseado em Matola, Moçambique. Combino pensamento
+          criativo com princípios de design centrado no utilizador para criar produtos
+          digitais que as pessoas adoram usar.
+        </p>
+        <p class="text-slate-400 leading-relaxed">
+          Especializado em transformar conceitos complexos em interfaces simples,
+          intuitivas e visualmente impressionantes — do wireframe ao produto final.
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div class="flex flex-wrap gap-3">
+          <span class="skill-tag"><i class="ri-figma-line"></i> Figma</span>
+          <span class="skill-tag"><i class="ri-global-line"></i> Webflow</span>
+          <span class="skill-tag"><i class="ri-adobe-line"></i> Adobe XD</span>
+          <span class="skill-tag"><i class="ri-smartphone-line"></i> Mobile Design</span>
+          <span class="skill-tag"><i class="ri-layout-grid-line"></i> Design Systems</span>
+          <span class="skill-tag"><i class="ri-user-heart-line"></i> UX Research</span>
+          <span class="skill-tag"><i class="ri-palette-line"></i> Identidade Visual</span>
+          <span class="skill-tag"><i class="ri-presentation-line"></i> Prototipagem</span>
+          <span class="skill-tag"><i class="ri-contrast-2-line"></i> UI Animation</span>
+          <span class="skill-tag"><i class="ri-code-s-slash-line"></i> HTML &amp; CSS</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<section id="contact" class="py-28" style="background:#0a0a0a;">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 reveal">
+      <p class="text-sm font-mono tracking-widest mb-4" style="color:#14b8a6;">VAMOS TRABALHAR JUNTOS</p>
+      <h2 class="font-black tracking-tight mb-6" style="font-size:clamp(2.5rem,6vw,4rem);">ENTRE EM CONTATO</h2>
+      <p class="text-xl text-slate-400 max-w-lg mx-auto">Tem um projeto em mente? Adoraria ouvir sobre ele.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Info -->
+      <div class="space-y-8 reveal">
+        <div class="flex items-start gap-5">
+          <div class="contact-icon"><i class="ri-map-pin-line text-xl" style="color:#14b8a6;"></i></div>
+          <div>
+            <h3 class="font-bold text-slate-200 mb-1">Localização</h3>
+            <p class="text-slate-400">Matola, Maputo — Moçambique</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="contact-icon"><i class="ri-mail-line text-xl" style="color:#14b8a6;"></i></div>
+          <div>
+            <h3 class="font-bold text-slate-200 mb-1">E-mail</h3>
+            <a href="mailto:cheltonmahoze7@gmail.com" class="text-slate-400 hover:text-teal-400 transition-colors" style="text-decoration:none;">cheltonmahoze7@gmail.com</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-5">
+          <div class="contact-icon"><i class="ri-whatsapp-line text-xl" style="color:#14b8a6;"></i></div>
+          <div>
+            <h3 class="font-bold text-slate-200 mb-1">WhatsApp</h3>
+            <a href="https://wa.me/258846148256" target="_blank" rel="noopener" class="text-slate-400 hover:text-teal-400 transition-colors" style="text-decoration:none;">+258 846 148 256</a>
+          </div>
+        </div>
+        <!-- Social -->
+        <div class="flex gap-4 pt-2">
+          <a href="https://www.instagram.com/chelton__m" target="_blank" rel="noopener"
+             style="width:48px;height:48px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:1.25rem;transition:all 0.3s;text-decoration:none;"
+             onmouseover="this.style.borderColor='rgba(20,184,166,0.4)';this.style.color='#14b8a6';this.style.background='rgba(20,184,166,0.08)';"
+             onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#64748b';this.style.background='rgba(255,255,255,0.04)';"
+             onclick="gtag('event','social_click',{event_category:'Social',event_label:'Instagram',value:1})">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://wa.me/258846148256" target="_blank" rel="noopener"
+             style="width:48px;height:48px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:1.25rem;transition:all 0.3s;text-decoration:none;"
+             onmouseover="this.style.borderColor='rgba(20,184,166,0.4)';this.style.color='#14b8a6';this.style.background='rgba(20,184,166,0.08)';"
+             onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#64748b';this.style.background='rgba(255,255,255,0.04)';"
+             onclick="gtag('event','social_click',{event_category:'Social',event_label:'WhatsApp',value:1})">
+            <i class="ri-whatsapp-line"></i>
+          </a>
+          <a href="https://pinterest.com/pin/1087830622401091418" target="_blank" rel="noopener"
+             style="width:48px;height:48px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:1.25rem;transition:all 0.3s;text-decoration:none;"
+             onmouseover="this.style.borderColor='rgba(20,184,166,0.4)';this.style.color='#14b8a6';this.style.background='rgba(20,184,166,0.08)';"
+             onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#64748b';this.style.background='rgba(255,255,255,0.04)';"
+             onclick="gtag('event','social_click',{event_category:'Social',event_label:'Pinterest',value:1})">
+            <i class="ri-pinterest-line"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal" style="transition-delay:0.2s;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2rem;">
+        <form id="contact-form" novalidate>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="name" class="sr-only">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Nome *" required class="form-input">
+            </div>
+            <div>
+              <label for="phone" class="sr-only">Telefone</label>
+              <input type="tel" id="phone" name="phone" placeholder="Telefone (opcional)" class="form-input">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="email" class="sr-only">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="E-mail *" required class="form-input">
+          </div>
+          <div class="mb-5">
+            <label for="message" class="sr-only">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Mensagem *" rows="5" required class="form-input" style="resize:none;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full" id="submit-btn" style="width:100%;">
+            Enviar Mensagem &nbsp;<i class="ri-send-plane-line"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
-<footer class="bg-[#111111] py-12 text-center border-t border-slate-800">
-<p class="text-xl text-slate-300 font-medium">Obrigado por visitar meu portfólio!</p>
+<footer style="background:#050505;border-top:1px solid rgba(255,255,255,0.05);padding:3rem 1.5rem;">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <span class="text-xl font-black tracking-widest gradient-text">WALK</span>
+    <p style="color:#334155;font-size:0.875rem;">© 2025 Chelton Mahoze. Todos os direitos reservados.</p>
+    <div style="display:flex;gap:1.5rem;font-size:0.875rem;">
+      <a href="#home" style="color:#475569;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#14b8a6'" onmouseout="this.style.color='#475569'">Início</a>
+      <a href="#portfolio" style="color:#475569;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#14b8a6'" onmouseout="this.style.color='#475569'">Projetos</a>
+      <a href="#contact" style="color:#475569;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#14b8a6'" onmouseout="this.style.color='#475569'">Contato</a>
+    </div>
+  </div>
 </footer>
-<script id="smooth-scroll">
-document.addEventListener('DOMContentLoaded', function() {
-const links = document.querySelectorAll('a[href^="#"]');
-links.forEach(link => {
-link.addEventListener('click', function(e) {
-e.preventDefault();
-const targetId = this.getAttribute('href');
-const targetElement = document.querySelector(targetId);
-if (targetElement) {
-targetElement.scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-// Track navigation clicks
-gtag('event', 'navigation_click', {
-event_category: 'Navigation',
-event_label: targetId,
-value: 1
-});
-}
-});
-});
-});
-</script>
-<script id="scroll-indicator">
-document.addEventListener('DOMContentLoaded', function() {
-const scrollIndicator = document.querySelector('.scroll-indicator');
-if (scrollIndicator) {
-scrollIndicator.addEventListener('click', function() {
-document.querySelector('#portfolio').scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-});
-}
-});
-</script>
+
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2ELNGXC4B"></script>
 <script>
@@ -351,201 +800,258 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-E2ELNGXC4B', {
-page_title: 'Chelton - Designer UI/UX ',
-page_location: window.location.href,
-send_page_view: true
+  page_title: 'Chelton — Designer UI/UX',
+  page_location: window.location.href,
+  send_page_view: true
 });
 </script>
 
+<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-emailjs.init("DjHy-Gtg4HgNi6BSp");
-console.log('EmailJS inicializado com sucesso');
+
+  emailjs.init("DjHy-Gtg4HgNi6BSp");
+
+  // ── Preload hero image
+  var preloadLink = document.createElement('link');
+  preloadLink.rel = 'preload'; preloadLink.as = 'image'; preloadLink.href = 'chelton.jpg';
+  document.head.appendChild(preloadLink);
+
+  // ── Custom cursor (desktop only)
+  var cursor = document.getElementById('cursor');
+  var cursorRing = document.getElementById('cursor-ring');
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      cursor.style.left = (e.clientX - 5) + 'px';
+      cursor.style.top  = (e.clientY - 5) + 'px';
+      cursorRing.style.left = (e.clientX - 18) + 'px';
+      cursorRing.style.top  = (e.clientY - 18) + 'px';
+    });
+    document.querySelectorAll('a, button').forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        cursor.style.transform = 'scale(2.5)';
+        cursorRing.style.transform = 'scale(1.5)';
+        cursorRing.style.borderColor = '#14b8a6';
+      });
+      el.addEventListener('mouseleave', function() {
+        cursor.style.transform = 'scale(1)';
+        cursorRing.style.transform = 'scale(1)';
+        cursorRing.style.borderColor = 'rgba(20,184,166,0.4)';
+      });
+    });
+  } else {
+    cursor.style.display = 'none';
+    cursorRing.style.display = 'none';
+  }
+
+  // ── Typing animation
+  var typingEl = document.getElementById('typing-name');
+  var word = 'CHELTON';
+  var i = 0;
+  function type() {
+    if (i <= word.length) {
+      typingEl.textContent = word.substring(0, i);
+      i++;
+      setTimeout(type, 110);
+    }
+  }
+  setTimeout(type, 500);
+
+  // ── Scroll-driven effects
+  var progressBar = document.getElementById('scroll-progress');
+  var backToTop   = document.getElementById('back-to-top');
+  var sections    = document.querySelectorAll('section[id]');
+  var navLinks    = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', function() {
+    var scrolled = window.pageYOffset;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = total > 0 ? (scrolled / total) * 100 : 0;
+    progressBar.style.width = pct + '%';
+
+    backToTop.classList.toggle('visible', scrolled > 400);
+
+    // Active nav spy
+    var current = '';
+    sections.forEach(function(s) {
+      if (scrolled >= s.offsetTop - 140) current = s.id;
+    });
+    navLinks.forEach(function(l) {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+
+    // Scroll depth events
+    var p = Math.round(pct);
+    if (p >= 25 && !window._s25) { gtag('event','scroll_depth',{event_category:'Engagement',event_label:'25%',value:1}); window._s25=true; }
+    if (p >= 50 && !window._s50) { gtag('event','scroll_depth',{event_category:'Engagement',event_label:'50%',value:1}); window._s50=true; }
+    if (p >= 75 && !window._s75) { gtag('event','scroll_depth',{event_category:'Engagement',event_label:'75%',value:1}); window._s75=true; }
+    if (p >= 90 && !window._s90) { gtag('event','scroll_depth',{event_category:'Engagement',event_label:'90%',value:1}); window._s90=true; }
+  }, { passive: true });
+
+  // ── Back to top click
+  backToTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ── Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      var target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      gtag('event','navigation_click',{event_category:'Navigation',event_label:href,value:1});
+      // close mobile menu
+      document.getElementById('mobile-menu').classList.remove('open');
+      document.getElementById('hamburger-btn').classList.remove('open');
+    });
+  });
+
+  // ── Mobile menu
+  var mobileMenu    = document.getElementById('mobile-menu');
+  var hamburgerBtn  = document.getElementById('hamburger-btn');
+  var closeMenuBtn  = document.getElementById('close-menu');
+  hamburgerBtn.addEventListener('click', function() {
+    this.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  closeMenuBtn.addEventListener('click', function() {
+    hamburgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+
+  // ── Reveal on scroll
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+  // ── Animated counters
+  var counterObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var target = parseInt(el.dataset.target, 10);
+      var suffix = el.dataset.suffix || '';
+      var duration = 1400;
+      var startTime = null;
+      function tick(now) {
+        if (!startTime) startTime = now;
+        var progress = Math.min((now - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-target]').forEach(function(el) { counterObs.observe(el); });
+
+  // ── Time on page
+  var t0 = Date.now();
+  window.addEventListener('beforeunload', function() {
+    gtag('event','time_on_page',{event_category:'Engagement',event_label:'Time Spent',value:Math.round((Date.now()-t0)/1000)});
+  });
+
+  // ── Contact form
+  var form       = document.getElementById('contact-form');
+  var submitBtn  = document.getElementById('submit-btn');
+  var origBtnHTML = submitBtn.innerHTML;
+  var isSubmitting = false;
+
+  function showToast(msg, type) {
+    var t = document.createElement('div');
+    t.className = 'toast';
+    t.style.background = type === 'success' ? '#0f766e' : '#991b1b';
+    t.style.color = '#fff';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    gtag('event', type === 'success' ? 'form_submit' : 'form_error', {event_category:'Form',event_label:type==='success'?'Contact Form Success':'Contact Form Error',value:1});
+    setTimeout(function() {
+      t.style.transition = 'opacity 0.3s';
+      t.style.opacity = '0';
+      setTimeout(function() { t.remove(); }, 300);
+    }, 4500);
+  }
+
+  function validate(fd) {
+    if (!fd.get('name')?.trim()) return 'Nome é obrigatório';
+    var em = fd.get('email');
+    if (!em?.trim()) return 'E-mail é obrigatório';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return 'E-mail inválido';
+    if (!fd.get('message')?.trim()) return 'Mensagem é obrigatória';
+    return null;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (isSubmitting) return;
+    if (typeof emailjs === 'undefined') { showToast('Serviço de e-mail não carregado. Recarregue a página.', 'error'); return; }
+    var fd = new FormData(this);
+    var err = validate(fd);
+    if (err) { showToast(err, 'error'); return; }
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Enviando... <i class="ri-loader-4-line" style="margin-left:8px;animation:spin 1s linear infinite;display:inline-block;"></i>';
+    try {
+      await emailjs.send('service_vv7r3tl', 'template_kb50h7r', {
+        from_name:  fd.get('name'),
+        from_email: fd.get('email'),
+        from_phone: fd.get('phone') || 'Não informado',
+        message:    fd.get('message'),
+        to_name:    'Chelton',
+        reply_to:   fd.get('email')
+      });
+      showToast('Mensagem enviada! Entrarei em contato em breve.', 'success');
+      form.reset();
+      form.querySelectorAll('.form-input').forEach(function(i) { i.classList.remove('valid','invalid'); });
+    } catch (_) {
+      showToast('Erro ao enviar. Contacte pelo WhatsApp: +258 846 148 256', 'error');
+    } finally {
+      isSubmitting = false;
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origBtnHTML;
+    }
+  });
+
+  form.querySelectorAll('input, textarea').forEach(function(input) {
+    input.addEventListener('blur', function() {
+      var v = this.value.trim();
+      this.classList.remove('valid', 'invalid');
+      if (!v) return;
+      var ok = true;
+      if (this.name === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      else if (this.name === 'name' || this.name === 'message') ok = v.length > 0;
+      this.classList.add(ok ? 'valid' : 'invalid');
+    });
+  });
+
 });
 </script>
-<script id="form-handler">
-document.addEventListener('DOMContentLoaded', function() {
-const form = document.querySelector('form');
-const submitBtn = form.querySelector('button[type="submit"]');
-const originalBtnText = submitBtn.textContent;
-let isSubmitting = false;
 
-// Função para mostrar feedback
-function showFeedback(message, type = 'success') {
-const feedbackDiv = document.createElement('div');
-feedbackDiv.className = `fixed top-4 right-4 p-4 rounded-lg text-white font-medium z-50 transition-all duration-300 ${
-type === 'success' ? 'bg-green-600' : 'bg-red-600'
-}`;
-feedbackDiv.textContent = message;
-document.body.appendChild(feedbackDiv);
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
 
-// Track form submission
-if (type === 'success') {
-gtag('event', 'form_submit', {
-event_category: 'Form',
-event_label: 'Contact Form Success',
-value: 1
-});
-} else {
-gtag('event', 'form_error', {
-event_category: 'Form',
-event_label: 'Contact Form Error',
-value: 1
-});
-}
-
-// Remover feedback após 4 segundos
-setTimeout(() => {
-feedbackDiv.style.opacity = '0';
-setTimeout(() => feedbackDiv.remove(), 300);
-}, 4000);
-}
-
-// Função para validar campos
-function validateForm(formData) {
-const errors = [];
-const requiredFields = ['name', 'email', 'message'];
-
-requiredFields.forEach(field => {
-const value = formData.get(field);
-if (!value || value.trim() === '') {
-errors.push(`${field === 'name' ? 'Nome' : field === 'email' ? 'E-mail' : 'Mensagem'} é obrigatório`);
-}
-});
-
-// Validar formato de e-mail
-const email = formData.get('email');
-if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-errors.push('E-mail inválido');
-}
-
-return errors;
-}
-
-// Função para resetar formulário
-function resetForm() {
-const inputs = form.querySelectorAll('input, textarea');
-inputs.forEach(input => {
-input.value = '';
-input.classList.remove('border-green-500', 'border-red-500');
-});
-}
-
-// Função para mostrar estado de loading
-function setLoadingState(loading) {
-isSubmitting = loading;
-submitBtn.disabled = loading;
-submitBtn.textContent = loading ? 'ENVIANDO...' : originalBtnText;
-submitBtn.classList.toggle('opacity-50', loading);
-}
-
-if (form) {
-console.log('Formulário encontrado, configurando eventos...');
-form.addEventListener('submit', async function(e) {
-e.preventDefault();
-console.log('Formulário submetido');
-if (isSubmitting) return;
-
-// Verificar se EmailJS está carregado
-if (typeof emailjs === 'undefined') {
-console.error('EmailJS não está definido');
-showFeedback('Erro: EmailJS não está carregado. Recarregue a página.', 'error');
-return;
-}
-
-console.log('EmailJS está disponível:', emailjs);
-
-const formData = new FormData(this);
-console.log('Dados do formulário:', {
-name: formData.get('name'),
-email: formData.get('email'),
-phone: formData.get('phone'),
-message: formData.get('message')
-});
-
-const errors = validateForm(formData);
-
-if (errors.length > 0) {
-console.log('Erros de validação:', errors);
-showFeedback(errors.join(', '), 'error');
-return;
-}
-
-console.log('Iniciando envio do e-mail...');
-setLoadingState(true);
-
-try {
-console.log('Preparando parâmetros do template...');
-// Configuração do EmailJS
-const templateParams = {
-from_name: formData.get('name'),
-from_email: formData.get('email'),
-from_phone: formData.get('phone') || 'Não informado',
-message: formData.get('message'),
-to_name: 'Chelton',
-reply_to: formData.get('email')
-};
-
-console.log('Parâmetros do template:', templateParams);
-console.log('Tentando enviar e-mail...');
-
-// Enviar e-mail usando EmailJS
-const result = await emailjs.send(
-'service_vv7r3tl',
-'template_kb50h7r',
-templateParams
-);
-
-console.log('Email enviado com sucesso:', result);
-showFeedback('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
-resetForm();
-
-} catch (error) {
-console.error('Erro detalhado ao enviar e-mail:', error);
-console.error('Tipo do erro:', typeof error);
-console.error('Mensagem do erro:', error.message);
-console.error('Stack do erro:', error.stack);
-showFeedback('Erro ao enviar mensagem. Verifique o console para mais detalhes.', 'error');
-} finally {
-console.log('Finalizando envio...');
-setLoadingState(false);
-}
-});
-
-// Validação em tempo real
-const inputs = form.querySelectorAll('input, textarea');
-inputs.forEach(input => {
-input.addEventListener('blur', function() {
-const value = this.value.trim();
-const fieldName = this.name;
-let isValid = true;
-
-if (fieldName === 'email' && value) {
-isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-} else if (['name', 'message'].includes(fieldName)) {
-isValid = value.length > 0;
-}
-
-this.classList.remove('border-green-500', 'border-red-500');
-if (value) {
-this.classList.add(isValid ? 'border-green-500' : 'border-red-500');
-}
-});
-});
-}
-});
-</script>
-<!-- Structured Data for SEO -->
+<!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Chelton",
+  "name": "Chelton Mahoze",
   "jobTitle": "Designer UI/UX",
-  "description": "Designer UI/UX profissional especializado em interfaces digitais, aplicativos móveis e websites responsivos",
-  "url": "https://chelton-portfolio.com/",
-  "image": "https://chelton-portfolio.com/chelton.jpg",
+  "description": "Designer UI/UX especializado em interfaces digitais, aplicativos móveis e websites responsivos",
+  "url": "https://chelton777.github.io/Chelton.portfolio/",
+  "image": "https://chelton777.github.io/Chelton.portfolio/chelton.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Matola",
@@ -562,142 +1068,9 @@ this.classList.add(isValid ? 'border-green-500' : 'border-red-500');
     "https://www.instagram.com/chelton__m",
     "https://wa.me/258846148256"
   ],
-  "knowsAbout": [
-    "UI/UX Design",
-    "Mobile App Design",
-    "Web Design",
-    "Brand Identity",
-    "Prototyping"
-  ]
+  "knowsAbout": ["UI/UX Design","Mobile App Design","Web Design","Brand Identity","Prototyping","Figma","Webflow","Adobe XD"]
 }
 </script>
 
-<script id="portfolio-animations">
-document.addEventListener('DOMContentLoaded', function() {
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.style.opacity = '1';
-entry.target.style.transform = 'translateY(0)';
-}
-});
-}, {
-threshold: 0.1,
-rootMargin: '0px 0px -50px 0px'
-});
-const portfolioCards = document.querySelectorAll('.card-hover');
-portfolioCards.forEach((card, index) => {
-card.style.opacity = '0';
-card.style.transform = 'translateY(30px)';
-card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-observer.observe(card);
-});
-});
-</script>
-<script id="parallax-effect">
-document.addEventListener('DOMContentLoaded', function() {
-let ticking = false;
-let lastScrollY = window.scrollY;
-
-function updateParallax() {
-const scrolled = window.pageYOffset;
-const parallaxElements = document.querySelectorAll('.parallax-element');
-const parallaxBgs = document.querySelectorAll('.parallax-bg');
-
-// Efeito parallax para a imagem do hero
-parallaxElements.forEach(element => {
-const speed = 0.5;
-const yPos = -(scrolled * speed);
-element.style.transform = `translateY(${yPos}px)`;
-});
-
-// Efeito parallax sutil para os fundos das seções
-parallaxBgs.forEach((bg, index) => {
-const speed = 0.1 + (index * 0.05);
-const yPos = -(scrolled * speed);
-bg.style.transform = `translateY(${yPos}px)`;
-});
-
-// Track scroll depth
-const scrollPercent = Math.round((scrolled / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-if (scrollPercent >= 25 && !window.scroll25Tracked) {
-gtag('event', 'scroll_depth', {event_category: 'Engagement', event_label: '25%', value: 1});
-window.scroll25Tracked = true;
-}
-if (scrollPercent >= 50 && !window.scroll50Tracked) {
-gtag('event', 'scroll_depth', {event_category: 'Engagement', event_label: '50%', value: 1});
-window.scroll50Tracked = true;
-}
-if (scrollPercent >= 75 && !window.scroll75Tracked) {
-gtag('event', 'scroll_depth', {event_category: 'Engagement', event_label: '75%', value: 1});
-window.scroll75Tracked = true;
-}
-if (scrollPercent >= 90 && !window.scroll90Tracked) {
-gtag('event', 'scroll_depth', {event_category: 'Engagement', event_label: '90%', value: 1});
-window.scroll90Tracked = true;
-}
-
-ticking = false;
-}
-
-function requestTick() {
-if (!ticking) {
-requestAnimationFrame(updateParallax);
-ticking = true;
-}
-}
-
-window.addEventListener('scroll', requestTick, { passive: true });
-
-// Inicializar o efeito
-updateParallax();
-
-// Track time on page
-let startTime = Date.now();
-window.addEventListener('beforeunload', function() {
-const timeSpent = Math.round((Date.now() - startTime) / 1000);
-gtag('event', 'time_on_page', {
-event_category: 'Engagement',
-event_label: 'Time Spent',
-value: timeSpent
-});
-});
-});
-</script>
-
-<!-- Performance and SEO optimizations -->
-<script>
-// Lazy load images
-document.addEventListener('DOMContentLoaded', function() {
-const images = document.querySelectorAll('img[loading="lazy"]');
-if ('IntersectionObserver' in window) {
-const imageObserver = new IntersectionObserver((entries, observer) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const img = entry.target;
-img.src = img.src;
-img.classList.remove('lazy');
-imageObserver.unobserve(img);
-}
-});
-});
-images.forEach(img => imageObserver.observe(img));
-}
-
-// Preload critical resources
-const criticalResources = [
-'chelton.jpg',
-'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap'
-];
-
-criticalResources.forEach(resource => {
-const link = document.createElement('link');
-link.rel = 'preload';
-link.as = resource.includes('.jpg') ? 'image' : 'style';
-link.href = resource;
-document.head.appendChild(link);
-});
-});
-</script>
 </body>
 </html>
