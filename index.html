@@ -177,7 +177,7 @@ will-change: transform;
 <!-- Hero Section -->
 <section id="home" class="min-h-screen bg-black relative overflow-hidden">
 <!-- Decorative glow -->
-<div class="absolute inset-0 -z-0 pointer-events-none">
+<div class="absolute inset-0 pointer-events-none">
 <div class="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-teal-500/10 blur-[120px]"></div>
 </div>
 <div class="container mx-auto min-h-screen py-32 lg:py-0 lg:h-screen flex items-center relative z-10">
@@ -197,7 +197,7 @@ Crio interfaces digitais intuitivas e memoráveis para apps, sites e marcas em M
 <a href="#portfolio" class="inline-flex items-center justify-center bg-white text-black px-8 py-3.5 !rounded-button font-bold text-base tracking-wide hover:bg-slate-200 transition-colors whitespace-nowrap">
 VER PORTFÓLIO
 </a>
-<a href="https://wa.me/258846148256" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-slate-700 text-slate-200 px-8 py-3.5 !rounded-button font-bold text-base tracking-wide hover:bg-slate-800 transition-colors whitespace-nowrap" onclick="gtag('event', 'social_click', {event_category: 'Social', event_label: 'WhatsApp Hero CTA', value: 1})">
+<a href="https://wa.me/258846148256" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-slate-700 text-slate-200 px-8 py-3.5 !rounded-button font-bold text-base tracking-wide hover:bg-slate-800 transition-colors whitespace-nowrap" onclick="window.gtag &amp;&amp; gtag('event', 'social_click', {event_category: 'Social', event_label: 'WhatsApp Hero CTA', value: 1})">
 <i class="ri-whatsapp-line"></i>
 FALE COMIGO
 </a>
@@ -221,8 +221,10 @@ Figma, Webflow &amp; Adobe XD
 <img src="chelton.jpg" alt="Chelton - Designer UI/UX profissional em Matola, Maputo" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
 </div>
 </div>
-<button type="button" class="scroll-indicator hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 items-center justify-center w-10 h-10 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-colors" aria-label="Rolar para o portfólio">
+<button type="button" class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 items-center justify-center w-10 h-10 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-colors" aria-label="Rolar para o portfólio">
+<span class="scroll-indicator flex items-center justify-center w-full h-full">
 <i class="ri-arrow-down-line text-xl"></i>
+</span>
 </button>
 </section>
 <!-- Portfolio Section -->
@@ -575,8 +577,8 @@ this.classList.add(isValid ? 'border-green-500' : 'border-red-500');
   "name": "Chelton",
   "jobTitle": "Designer UI/UX",
   "description": "Designer UI/UX profissional especializado em interfaces digitais, aplicativos móveis e websites responsivos",
-  "url": "https://chelton-portfolio.com/",
-  "image": "https://chelton-portfolio.com/chelton.jpg",
+  "url": "https://chelton777.github.io/Chelton.portfolio/",
+  "image": "https://chelton777.github.io/Chelton.portfolio/chelton.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Matola",
