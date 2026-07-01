@@ -176,23 +176,54 @@ will-change: transform;
 </div>
 <!-- Hero Section -->
 <section id="home" class="min-h-screen bg-black relative overflow-hidden">
-<div class="container mx-auto h-screen flex items-center relative z-10">
-<div class="max-w-2xl pl-12">
+<!-- Decorative glow -->
+<div class="absolute inset-0 -z-0 pointer-events-none">
+<div class="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-teal-500/10 blur-[120px]"></div>
+</div>
+<div class="container mx-auto min-h-screen py-32 lg:py-0 lg:h-screen flex items-center relative z-10">
+<div class="max-w-2xl px-6 sm:pl-12">
 <div class="space-y-6 text-left">
+<a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-slate-800/80 px-4 py-1.5 text-sm font-medium text-slate-200 ring-1 ring-inset ring-slate-700 hover:bg-slate-700/80 transition-colors">
+<span class="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+Disponível para novos projetos
+</a>
 <p class="text-2xl font-light">Ola, Eu sou</p>
 <h1 class="text-6xl font-bold tracking-tight">CHELTON</h1>
 <p class="text-3xl font-medium text-slate-300">Designer UI/UX</p>
+<p class="text-lg text-slate-400 max-w-md leading-relaxed">
+Crio interfaces digitais intuitivas e memoráveis para apps, sites e marcas em Matola, Maputo.
+</p>
+<div class="flex flex-col sm:flex-row items-start gap-4 pt-2">
+<a href="#portfolio" class="inline-flex items-center justify-center bg-white text-black px-8 py-3.5 !rounded-button font-bold text-base tracking-wide hover:bg-slate-200 transition-colors whitespace-nowrap">
+VER PORTFÓLIO
+</a>
+<a href="https://wa.me/258846148256" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-slate-700 text-slate-200 px-8 py-3.5 !rounded-button font-bold text-base tracking-wide hover:bg-slate-800 transition-colors whitespace-nowrap" onclick="gtag('event', 'social_click', {event_category: 'Social', event_label: 'WhatsApp Hero CTA', value: 1})">
+<i class="ri-whatsapp-line"></i>
+FALE COMIGO
+</a>
+</div>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-4 text-sm text-slate-500">
+<span class="flex items-center gap-1.5">
+<i class="ri-checkbox-circle-fill text-teal-500"></i>
+Resposta em até 24h
+</span>
+<span class="flex items-center gap-1.5">
+<i class="ri-checkbox-circle-fill text-teal-500"></i>
+Figma, Webflow &amp; Adobe XD
+</span>
 </div>
 </div>
 </div>
-<div class="absolute top-0 right-0 max-w-2xl h-full parallax-element">
+</div>
+<div class="hidden lg:block absolute top-0 right-0 max-w-2xl w-full h-full parallax-element">
 <div class="relative w-full h-full">
-<div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-0"></div>
-<img src="chelton.jpg" alt="Chelton - Designer UI/UX profissional em Matola, Maputo" loading="lazy" decoding="async">
+<div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10"></div>
+<img src="chelton.jpg" alt="Chelton - Designer UI/UX profissional em Matola, Maputo" loading="lazy" decoding="async" class="w-full h-full object-cover object-top">
 </div>
 </div>
-</section>
-
+<button type="button" class="scroll-indicator hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 items-center justify-center w-10 h-10 rounded-full border border-slate-700 text-slate-400 hover:text-white hover:border-slate-500 transition-colors" aria-label="Rolar para o portfólio">
+<i class="ri-arrow-down-line text-xl"></i>
+</button>
 </section>
 <!-- Portfolio Section -->
 <section id="portfolio" class="min-h-screen bg-black py-24 section-transition parallax-bg">
